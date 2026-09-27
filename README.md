@@ -1,4 +1,4 @@
-# MBS WebTech — Full Stack Agency Website
+# MBS TECHNOLOGIES — Full Stack Agency Website
 
 A modern, production-ready digital agency website built with the MERN stack (MongoDB, Express, React, Node.js).
 
@@ -164,4 +164,4 @@ Backend: http://localhost:5000
 
 ## 📧 Contact
 
-**MBS WebTech** — hello@mbswebtech.com
+**MBS TECHNOLOGIES** — hello@mbstechnologies.com

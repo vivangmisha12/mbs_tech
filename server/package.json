@@ -1,7 +1,7 @@
 {
-  "name": "mbs-webtech-server",
+  "name": "mbs-technologies-server",
   "version": "1.0.0",
-  "description": "MBS WebTech Backend API",
+  "description": "MBS TECHNOLOGIES Backend API",
   "main": "index.js",
   "type": "module",
   "scripts": {

@@ -54,7 +54,7 @@ app.use('/api/blog', blogRoutes)
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
-    message: 'MBS WebTech API is running',
+    message: 'MBS TECHNOLOGIES API is running',
     timestamp: new Date().toISOString(),
   })
 })
@@ -87,7 +87,7 @@ const startServer = async () => {
     }
 
     app.listen(PORT, () => {
-      console.log(`🚀 MBS WebTech API running on port ${PORT}`)
+      console.log(`🚀 MBS TECHNOLOGIES API running on port ${PORT}`)
     })
   } catch (error) {
     console.error('❌ Failed to start server:', error)

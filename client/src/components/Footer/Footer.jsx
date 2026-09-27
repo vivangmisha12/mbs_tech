@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Zap, Mail, Phone, MapPin, Twitter, Linkedin, Github, Instagram, ArrowRight } from 'lucide-react'
+import logo from '../../assets/logo_bg_remove.png'
 
 const footerLinks = {
   company: [
     { label: 'About Us', href: '/about' },
     { label: 'Our Team', href: '/team' },
-    { label: 'Portfolio', href: '/portfolio' },
+    { label: 'Projects', href: '/portfolio' },
     { label: 'Blog', href: '/blog' },
   ],
   services: [
@@ -25,10 +26,10 @@ const footerLinks = {
 }
 
 const socials = [
+  { icon: Instagram, href: 'https://www.instagram.com/mbs.webtech?stkn=MW1mdDA5bTV1cGZoMA==', label: 'Instagram' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/vivang-mishra-25a866295', label: 'LinkedIn' },
   { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
   { icon: Github, href: '#', label: 'GitHub' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
 ]
 
 export default function Footer() {
@@ -43,12 +44,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 pb-12 border-b border-slate-800">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2.5 mb-5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-600 to-teal-500 flex items-center justify-center">
-                <Zap className="w-5 h-5 text-white fill-white" />
-              </div>
+            <Link to="/" className="flex items-center gap-2.5 mb-5 group">
+              <img
+                src={logo}
+                alt="MBS TECHNOLOGIES Logo"
+                className="w-9 h-9 object-contain rounded-xl group-hover:scale-105 transition-transform"
+              />
               <span className="text-xl font-display font-bold text-white">
-                MBS <span className="gradient-text">WebTech</span>
+                MBS <span className="gradient-text">TECHNOLOGIES</span>
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-xs">
@@ -61,10 +64,18 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-brand-500" />
                 mbswebtechsolutions@gmail.com
               </a>
-              <a href="tel:+91 8468016194" className="flex items-center gap-3 text-sm hover:text-brand-400 transition-colors">
-                <Phone className="w-4 h-4 text-brand-500" />
-                +91 8468016194
-              </a>
+              <div className="flex items-center gap-3 text-sm">
+                <Phone className="w-4 h-4 text-brand-500 shrink-0" />
+                <div className="flex flex-wrap items-center gap-x-1.5">
+                  <a href="tel:+918468016194" className="hover:text-brand-400 transition-colors">
+                    +91 8468016194
+                  </a>
+                  <span className="text-slate-600">/</span>
+                  <a href="tel:+919569881374" className="hover:text-brand-400 transition-colors">
+                    +91 9569881374
+                  </a>
+                </div>
+              </div>
               <div className="flex items-center gap-3 text-sm">
                 <MapPin className="w-4 h-4 text-brand-500" />
                 Lucknow, Uttar Pradesh
@@ -77,6 +88,8 @@ export default function Footer() {
                 <a
                   key={label}
                   href={href}
+                  target={href !== '#' ? '_blank' : undefined}
+                  rel={href !== '#' ? 'noopener noreferrer' : undefined}
                   aria-label={label}
                   className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-600 flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5"
                 >
@@ -109,35 +122,17 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Newsletter */}
-        <div className="py-8 border-b border-slate-800">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div>
-              <h4 className="text-white font-semibold mb-1">Stay in the loop</h4>
-              <p className="text-slate-400 text-sm">Get the latest web dev tips and updates from our blog.</p>
-            </div>
-            <div className="flex gap-2 w-full sm:w-auto">
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="flex-1 sm:w-64 px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
-              />
-              <button className="btn-primary py-2.5 text-sm whitespace-nowrap">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
+
 
         {/* Bottom */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} MBS WebTech. All rights reserved.
+            © {new Date().getFullYear()} MBS TECHNOLOGIES. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
-            <a href="#" className="text-slate-500 hover:text-brand-400 transition-colors">Privacy Policy</a>
-            <a href="#" className="text-slate-500 hover:text-brand-400 transition-colors">Terms of Service</a>
-            <a href="#" className="text-slate-500 hover:text-brand-400 transition-colors">Cookie Policy</a>
+            <Link to="/privacy" className="text-slate-500 hover:text-brand-400 transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="text-slate-500 hover:text-brand-400 transition-colors">Terms of Service</Link>
+            <Link to="/cookies" className="text-slate-500 hover:text-brand-400 transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>

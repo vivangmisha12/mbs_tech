@@ -3,49 +3,36 @@ import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { Zap, Github, Linkedin, Twitter, Code2, Palette, Smartphone, Globe } from 'lucide-react'
 import PageWrapper, { FadeIn, StaggerContainer, StaggerItem } from '../components/UI/PageWrapper'
+import ritikImg from '../assets/ritik_pandey.jpg'
+import vivangImg from '../assets/vivang_mishra.jpg'
 
 const team = [
   {
-    name: 'Ritik Pandey', role: 'Founder & Lead Developer', initials: 'RP',
+    name: 'Ritik Pandey',
+    role: 'Founder & Full Stack Developer',
+    initials: 'RP',
+    image: ritikImg,
     color: 'from-brand-500 to-teal-500',
     specialization: 'Full Stack Development & Android',
     icon: Code2,
     bio: 'Passionate full-stack developer with 3+ years of experience in building modern web applications. Ritik leads the technical architecture and development team, ensuring every project meets the highest quality standards.',
     skills: ['React.js', 'Node.js', 'MongoDB', 'Express', 'Android', 'JAVA', 'Firebase'],
     exp: '3+ years',
-    social: { github: '#', linkedin: '#'},
+    social: { github: '#', linkedin: 'https://www.linkedin.com/in/ritik-pandey-44221a28a/' },
   },
   {
-    name: 'Vivang Mishra', role: 'Full Stack Developer (MERN)', initials: 'VM',
+    name: 'Vivang Mishra',
+    role: 'Co-Founder & Full Stack Developer (MERN)',
+    initials: 'VM',
+    image: vivangImg,
     color: 'from-purple-500 to-pink-500',
     specialization: 'Full Stack Development & AI Integration',
     icon: Palette,
     bio: 'Full-stack developer specializing in the MERN stack, with a passion for integrating AI solutions into web applications. Vivang focuses on creating user-friendly, performant web experiences that drive results for our clients.',
-    skills: ['React.js', 'Node.js', 'Express.js','MongoDB','Next.js','Tailwind CSS'],
+    skills: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Next.js', 'Tailwind CSS'],
     exp: '2+ years',
     social: { github: 'https://github.com/vivangmisha12', linkedin: 'https://www.linkedin.com/in/vivang-mishra-25a866295' },
   },
-  {
-    name: 'Raj Tiwari', role: 'Full Stack Developer (MERN)', initials: 'RT',
-    color: 'from-orange-500 to-red-500',
-    specialization: 'Full Stack Development',
-    icon: Smartphone,
-    bio: 'Dedicated full-stack developer focused on building reliable and scalable web applications. Raj contributes across frontend and backend with clean architecture and strong attention to performance.',
-    skills: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
-    exp: '2+ years',
-    social: { github: '#', linkedin: '#', twitter: '#' },
-  },
-  {
-    name: 'Vishwajeet Singh', role: 'Frontend Developer & Project Consultant', initials: 'VS',
-    color: 'from-teal-500 to-green-500',
-    specialization: 'Frontend Development',
-    icon: Globe,
-    bio: 'Frontend specialist passionate about creating smooth, accessible, and performant user interfaces. Vishwajeet brings designs to life with pixel-perfect React implementations and fluid animations.',
-    skills: ['React', 'JavaScript', 'HTML', 'Tailwind CSS', 'Project Consultant'],
-    exp: '2+ years',
-    social: { github: '#', linkedin: '#', twitter: '#' },
-  },
-  
 ]
 
 const perks = [
@@ -61,8 +48,18 @@ export default function Team() {
   return (
     <PageWrapper>
       <Helmet>
-        <title>Our Team - MBS WebTech | Meet the Experts</title>
-        <meta name="description" content="Meet the talented team behind MBS WebTech — developers, designers, and mobile specialists." />
+        <title>Engineering Leadership - MBS TECHNOLOGIES | Ritik Pandey & Vivang Mishra</title>
+        <meta
+          name="description"
+          content="Meet the core engineering team behind MBS TECHNOLOGIES — Ritik Pandey (Co-Founder & Lead Android/Full-Stack Developer) and Vivang Mishra (Co-Founder & Lead Full-Stack Architect)."
+        />
+        <link rel="canonical" href="https://mbswebtech.com/team" />
+        <meta property="og:title" content="Engineering Leadership - MBS TECHNOLOGIES" />
+        <meta
+          property="og:description"
+          content="Meet Ritik Pandey and Vivang Mishra — the core engineering team behind MBS TECHNOLOGIES."
+        />
+        <meta property="og:url" content="https://mbswebtech.com/team" />
       </Helmet>
 
       {/* Hero */}
@@ -77,7 +74,7 @@ export default function Team() {
               The Team Behind Your <span className="gradient-text">Digital Success</span>
             </h1>
             <p className="section-subheading">
-              Meet the passionate developers, designers, and specialists who pour their expertise into every project we take on.
+              Meet the passionate developers and specialists who pour their expertise into every project we take on.
             </p>
           </FadeIn>
         </div>
@@ -86,7 +83,7 @@ export default function Team() {
       {/* Team Grid */}
       <section className="pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StaggerContainer className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {team.map((member) => (
               <StaggerItem key={member.name}>
                 <motion.div
@@ -105,9 +102,17 @@ export default function Team() {
 
                   <div className="px-5 pb-5 -mt-6 relative">
                     {/* Avatar */}
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${member.color} flex items-center justify-center text-white text-lg font-display font-bold mb-3 shadow-lg border-4 border-white dark:border-slate-800`}>
-                      {member.initials}
-                    </div>
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-16 h-16 rounded-2xl object-cover mb-3 shadow-lg border-4 border-white dark:border-slate-800"
+                      />
+                    ) : (
+                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${member.color} flex items-center justify-center text-white text-lg font-display font-bold mb-3 shadow-lg border-4 border-white dark:border-slate-800`}>
+                        {member.initials}
+                      </div>
+                    )}
 
                     <h3 className="font-display font-bold text-slate-900 dark:text-white text-lg">{member.name}</h3>
                     <p className="text-brand-600 dark:text-brand-400 text-sm font-medium mb-3">{member.role}</p>

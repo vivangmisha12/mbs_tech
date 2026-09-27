@@ -21,7 +21,7 @@ const contactSchema = new mongoose.Schema({
   },
   service: {
     type: String,
-    enum: ['Website Development', 'E-Commerce Store', 'Portfolio Website', 'Android App', 'Website Redesign', 'SEO Setup', 'Other', ''],
+    enum: ['Website Development', 'E-Commerce Store', 'Custom Software Development', 'Android App', 'SEO Setup', 'Digital Marketing & Ads', 'Website Redesign', 'Portfolio Website', 'Other', ''],
     default: '',
   },
   budget: {

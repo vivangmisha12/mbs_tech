@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Moon, Sun, ChevronDown, Zap } from 'lucide-react'
+import logo from '../../assets/logo_bg_remove.png'
 
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
-  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Projects', href: '/portfolio' },
   { label: 'Process', href: '/process' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Blog', href: '/blog' },
@@ -45,11 +46,13 @@ export default function Navbar({ darkMode, setDarkMode }) {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2.5 group">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-600 to-teal-500 flex items-center justify-center shadow-md shadow-brand-500/30 group-hover:shadow-brand-500/50 transition-shadow">
-                <Zap className="w-5 h-5 text-white fill-white" />
-              </div>
+              <img
+                src={logo}
+                alt="MBS TECHNOLOGIES Logo"
+                className="w-9 h-9 object-contain rounded-xl shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform"
+              />
               <span className="text-xl font-display font-bold text-slate-900 dark:text-white">
-                MBS <span className="gradient-text">WebTech</span>
+                MBS <span className="gradient-text">TECHNOLOGIES</span>
               </span>
             </Link>
 

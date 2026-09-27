@@ -13,6 +13,7 @@ import Testimonials from './pages/Testimonials'
 import Blog from './pages/Blog'
 import Contact from './pages/Contact'
 import Team from './pages/Team'
+import Legal from './pages/Legal'
 import PageLoader from './components/UI/PageLoader'
 
 export default function App() {
@@ -23,8 +24,8 @@ export default function App() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Simulate initial load
-    const timer = setTimeout(() => setLoading(false), 1200)
+    // Initial splash screen duration
+    const timer = setTimeout(() => setLoading(false), 1800)
     return () => clearTimeout(timer)
   }, [])
 
@@ -58,6 +59,10 @@ export default function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/privacy" element={<Legal />} />
+          <Route path="/terms" element={<Legal />} />
+          <Route path="/cookies" element={<Legal />} />
+          <Route path="/legal" element={<Legal />} />
         </Routes>
       </AnimatePresence>
       <Footer />

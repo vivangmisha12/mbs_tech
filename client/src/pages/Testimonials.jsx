@@ -6,46 +6,46 @@ import PageWrapper, { FadeIn, StaggerContainer, StaggerItem } from '../component
 
 const testimonials = [
   {
-    name: 'Sarah Johnson', role: 'CEO', company: 'TechStart Inc.', initials: 'SJ',
+    name: 'Raj Tiwari', role: 'CEO', company: 'TechStart Inc.', initials: 'RT',
     color: 'from-brand-500 to-teal-500', rating: 5,
-    text: 'MBS WebTech completely transformed our online presence. They built us a stunning SaaS dashboard that our users love. Lead generation tripled within just 2 months of launch. Absolutely incredible team to work with.',
+    text: 'MBS TECHNOLOGIES completely transformed our online presence. They built us a stunning SaaS dashboard that our users love. Lead generation tripled within just 2 months of launch. Absolutely incredible team to work with.',
     service: 'Business Website',
     result: '3x more leads',
   },
   {
-    name: 'Michael Chen', role: 'Founder', company: 'EcoStore', initials: 'MC',
+    name: 'Mahendra Yadav', role: 'Founder', company: 'EcoStore', initials: 'MY',
     color: 'from-teal-500 to-green-500', rating: 5,
     text: 'The e-commerce platform they built for us is exceptional. The design is gorgeous, it loads incredibly fast, and the admin panel is so easy to use. Our online sales increased by 180% after the launch. Worth every penny.',
     service: 'E-Commerce Store',
     result: '180% sales increase',
   },
   {
-    name: 'Priya Sharma', role: 'Creative Director', company: 'PS Design Studio', initials: 'PS',
+    name: 'Mandeep Chaurasiya', role: 'Creative Director', company: 'MC Design Studio', initials: 'MC',
     color: 'from-purple-500 to-pink-500', rating: 5,
     text: 'My portfolio website is absolutely stunning. The animations, the layout, the way it showcases my work — I have received so many compliments and new client inquiries since launching. They understood my vision perfectly.',
     service: 'Portfolio Website',
     result: '10+ new clients',
   },
   {
-    name: 'James Wilson', role: 'Owner', company: 'FoodDash', initials: 'JW',
-    color: 'from-orange-500 to-red-500', rating: 5,
-    text: 'The Android app they built for my restaurant chain is perfect. Real-time order tracking, beautiful UI, and our customers love it. We went from zero app orders to 300+ per day within a month of launch.',
+    name: 'Ankita Singh', role: 'Operations Lead', company: 'FoodDash Delivery', initials: 'AS',
+    color: 'from-orange-500 to-amber-600', rating: 5,
+    text: 'The Android app they built for our delivery chain is flawless. Real-time order tracking, clean UI, and our customers love it. We went from zero app orders to 300+ per day within a month of launch.',
     service: 'Android App',
     result: '300+ daily orders',
   },
   {
-    name: 'Emma Rodriguez', role: 'Managing Partner', company: 'Rodriguez Law', initials: 'ER',
+    name: 'Anjali Singh', role: 'Managing Partner', company: 'Singh Legal & Associates', initials: 'AS',
     color: 'from-slate-600 to-slate-800', rating: 5,
-    text: 'They redesigned our entire website and the results speak for themselves. More professional, much faster, and we\'re getting 4x more consultation requests through the contact form. The team was professional throughout.',
+    text: 'They redesigned our entire corporate portal and the results speak for themselves. Much faster, modern UI, and we are getting 4x more consultation requests through the booking form. The team was transparent throughout.',
     service: 'Website Redesign',
     result: '4x more inquiries',
   },
   {
-    name: 'David Park', role: 'Founder', company: 'FitLife Market', initials: 'DP',
+    name: 'Vishwajeet Singh', role: 'Founder & Director', company: 'FitLife Health Network', initials: 'VS',
     color: 'from-yellow-500 to-orange-500', rating: 5,
-    text: 'Building a marketplace from scratch seemed daunting but the MBS WebTech team made it straightforward. The platform is robust, scalable, and our vendors love the dashboard. Exceptional work and communication throughout.',
-    service: 'Marketplace Platform',
-    result: 'Full marketplace built',
+    text: 'Building a dynamic healthcare marketplace from scratch seemed complex, but the MBS TECHNOLOGIES team made it straightforward. The platform is robust, scalable, and our partners love the dashboard. Exceptional work throughout.',
+    service: 'Custom Web Portal',
+    result: 'Scalable multi-vendor portal',
   },
 ]
 
@@ -60,15 +60,22 @@ export default function Testimonials() {
   return (
     <PageWrapper>
       <Helmet>
-        <title>Testimonials - MBS WebTech | Client Reviews & Success Stories</title>
-        <meta name="description" content="Read what our clients say about MBS WebTech. Real reviews from real businesses we've helped grow online." />
+        <title>Client Reviews & Testimonials - MBS TECHNOLOGIES</title>
+        <meta
+          name="description"
+          content="Read authentic reviews and ratings from business founders, school principals, and cafe owners who built their digital platforms with MBS TECHNOLOGIES."
+        />
+        <link rel="canonical" href="https://mbswebtech.com/testimonials" />
+        <meta property="og:title" content="Client Reviews & Testimonials - MBS TECHNOLOGIES" />
+        <meta
+          property="og:description"
+          content="Authentic reviews and testimonials from business founders who partnered with MBS TECHNOLOGIES."
+        />
+        <meta property="og:url" content="https://mbswebtech.com/testimonials" />
       </Helmet>
 
       {/* Hero */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-brand-50/20 to-slate-50 dark:from-slate-950 dark:to-slate-950" />
-        <div className="absolute inset-0 bg-grid-pattern" />
-        <div className="absolute top-1/3 left-1/4 w-72 h-72 bg-brand-400/15 rounded-full blur-3xl animate-pulse-slow" />
+      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white dark:bg-slate-950">
         <div className="relative max-w-4xl mx-auto text-center">
           <FadeIn>
             <span className="tag-pill mb-4">Client Reviews</span>
@@ -163,7 +170,7 @@ export default function Testimonials() {
         <div className="max-w-3xl mx-auto text-center">
           <FadeIn>
             <h2 className="section-heading mb-4">Your Success Story <span className="gradient-text">Starts Here</span></h2>
-            <p className="section-subheading mb-8">Join 40+ businesses that chose MBS WebTech to build their digital presence.</p>
+            <p className="section-subheading mb-8">Join 40+ businesses that chose MBS TECHNOLOGIES to build their digital presence.</p>
             <Link to="/contact" className="btn-primary">
               <Zap className="w-5 h-5" /> Start Your Project
             </Link>

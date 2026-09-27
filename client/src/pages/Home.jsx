@@ -4,26 +4,55 @@ import { Helmet } from 'react-helmet-async'
 import {
   ArrowRight, Code2, ShoppingCart, Smartphone, Globe,
   CheckCircle2, Star, Users, Award, Zap, Shield, TrendingUp,
-  Layers, ChevronRight, Play, Quote
+  Layers, ChevronRight, Play, Quote, Search, Megaphone, Cpu, RefreshCw,
+  ShieldCheck, Headphones, HeartHandshake, Clock, Sparkles
 } from 'lucide-react'
 import PageWrapper, { FadeIn, StaggerContainer, StaggerItem } from '../components/UI/PageWrapper'
 import CountUp from 'react-countup'
 import { useInView } from 'react-intersection-observer'
+import logo from '../assets/logo_bg_remove.png'
+import OffersMarquee from '../components/UI/MarqueeAnimation'
+import ServicesBadges from '../components/UI/ServicesBadges'
+import ritikImg from '../assets/ritik_pandey.jpg'
+import vivangImg from '../assets/vivang_mishra.jpg'
 
 // Data
 const services = [
-  { icon: Globe, title: 'Website Development', desc: 'Modern, fast-loading websites built with React and cutting-edge tech.', color: 'from-blue-500 to-brand-600' },
-  { icon: ShoppingCart, title: 'E-Commerce Solutions', desc: 'Full-featured online stores that convert visitors into customers.', color: 'from-teal-500 to-green-500' },
-  { icon: Layers, title: 'Portfolio Websites', desc: 'Stunning portfolios that showcase your work and attract clients.', color: 'from-purple-500 to-pink-500' },
-  { icon: Smartphone, title: 'Android App Development', desc: 'Native Android apps that deliver exceptional user experiences.', color: 'from-orange-500 to-red-500' },
-  { icon: TrendingUp, title: 'Website Redesign', desc: 'Transform outdated websites into modern, high-converting platforms.', color: 'from-brand-600 to-teal-500' },
+  { icon: Globe, title: 'Website Development', desc: 'Modern, lightning-fast web applications built with React, Next.js, and cutting-edge tech.', color: 'from-blue-500 to-brand-600' },
+  { icon: ShoppingCart, title: 'E-Commerce Solutions', desc: 'Full-featured online stores with payment gateways, inventory, and high-converting checkout flows.', color: 'from-teal-500 to-green-500' },
+  { icon: Cpu, title: 'Custom Software Development', desc: 'Tailored enterprise software, CRM/ERP systems, automation tools, and scalable cloud architectures.', color: 'from-indigo-500 to-purple-600' },
+  { icon: Smartphone, title: 'Android & Mobile Apps', desc: 'High-performance native Android apps and cross-platform mobile solutions with intuitive UI/UX.', color: 'from-orange-500 to-red-500' },
+  { icon: Search, title: 'SEO & Search Optimization', desc: 'Comprehensive technical SEO, keyword ranking strategies, and 95+ Core Web Vitals optimization.', color: 'from-amber-500 to-yellow-500' },
+  { icon: Megaphone, title: 'Digital Marketing & Ads', desc: 'Data-driven marketing campaigns, social media growth, lead generation, and Google/Meta ad strategies.', color: 'from-pink-500 to-rose-600' },
+  { icon: RefreshCw, title: 'Website Redesign', desc: 'Transform outdated sites into modern, high-converting digital platforms with zero downtime.', color: 'from-brand-600 to-teal-500' },
+  { icon: Layers, title: 'Portfolio & Brand Sites', desc: 'Stunning, animated portfolio websites that establish authority and attract high-ticket clients.', color: 'from-purple-500 to-pink-500' },
 ]
 
-const stats = [
-  { value: 100, suffix: '%', label: 'On-Time Delivery' },
-  { value: 5, suffix: '★', label: 'Average Rating' },
-  { value: 15, suffix: '+', label: 'Technologies Used' },
-  { value: 3, suffix: ' yrs', label: 'Experience' },
+const trustGuarantees = [
+  {
+    icon: ShieldCheck,
+    title: '100% Code Ownership',
+    desc: 'Complete IP rights and full source code handover to you. No hidden lock-ins, you own your tech.',
+    tag: 'Full Ownership',
+  },
+  {
+    icon: Headphones,
+    title: 'Direct Dev Access',
+    desc: 'No middle managers or communication delays. Collaborate 1-on-1 directly with the core developers.',
+    tag: 'Direct Talk',
+  },
+  {
+    icon: HeartHandshake,
+    title: 'Milestone Payments',
+    desc: 'Zero risk payment milestones. Pay phase by phase only after you review and approve each deliverable.',
+    tag: 'Risk-Free',
+  },
+  {
+    icon: Clock,
+    title: '30-Day Free Warranty',
+    desc: 'Complete peace of mind. Free post-launch bug fixing, deployment assistance, and optimization support.',
+    tag: 'Free Warranty',
+  },
 ]
 
 const whyUs = [
@@ -46,17 +75,17 @@ const process = [
 
 const testimonials = [
   {
-    name: 'Sarah Johnson', role: 'CEO, TechStart', avatar: 'SJ',
-    text: 'MBS WebTech transformed our online presence completely. The website they built tripled our lead generation within 2 months.',
+    name: 'Raj Tiwari', role: 'CEO, TechStart', avatar: 'RT',
+    text: 'MBS TECHNOLOGIES transformed our online presence completely. The website they built tripled our lead generation within 2 months.',
     rating: 5,
   },
   {
-    name: 'Michael Chen', role: 'Founder, EcoStore', avatar: 'MC',
+    name: 'Mahendra Yadav', role: 'Founder, EcoStore', avatar: 'MY',
     text: 'The e-commerce platform they built for us is exceptional. Sales increased by 180% after the launch. Incredible team!',
     rating: 5,
   },
   {
-    name: 'Priya Sharma', role: 'Creative Director', avatar: 'PS',
+    name: 'Mandeep Chaurasiya', role: 'Creative Director', avatar: 'MC',
     text: 'My portfolio website is absolutely stunning. I have received so many compliments and new client inquiries since launching.',
     rating: 5,
   },
@@ -65,18 +94,31 @@ const testimonials = [
 const techStack = ['React', 'Node.js', 'MongoDB', 'Android', 'Tailwind CSS', 'Express', 'Next.js', 'Firebase']
 
 const portfolioPreviews = [
-  { title: 'E-Commerce Platform', category: 'E-Commerce', tech: ['React', 'Node.js', 'MongoDB'], color: 'from-blue-400 to-brand-600' },
-  { title: 'SaaS Dashboard', category: 'Web App', tech: ['React', 'Express', 'MongoDB'], color: 'from-purple-400 to-pink-500' },
-  { title: 'Portfolio Website', category: 'Portfolio', tech: ['React', 'Tailwind'], color: 'from-teal-400 to-green-500' },
-  { title: 'Food Delivery App', category: 'Mobile', tech: ['Android', 'Firebase'], color: 'from-orange-400 to-red-500' },
-  { title: 'Corporate Website', category: 'Business', tech: ['React', 'Node.js'], color: 'from-brand-500 to-teal-500' },
-  { title: 'Blog Platform', category: 'Web App', tech: ['MERN Stack'], color: 'from-violet-400 to-purple-600' },
+  { title: 'The Sage Cafe', category: 'Cafe Website', tech: ['React', 'Tailwind', 'Vite'], color: 'from-amber-600 via-amber-700 to-yellow-600', link: 'https://the-sage-cafe.vercel.app/', logo: 'https://the-sage-cafe.vercel.app/brand_logo_icon.png' },
+  { title: 'Billing Software', category: 'Billing Software', tech: ['React', 'Node.js', 'MongoDB'], color: 'from-blue-600 via-indigo-600 to-indigo-700', link: 'https://billing-software-progix.vercel.app/', logo: 'https://billing-software-progix.vercel.app/progix_logo.png' },
+  { title: 'Greenwood Academy', category: 'School Portal', tech: ['React', 'Tailwind', 'Vite'], color: 'from-emerald-600 via-teal-600 to-teal-700', link: 'https://green-wood-acedmy.vercel.app/', logo: 'https://green-wood-acedmy.vercel.app/assets/school_website_logo-BDZazFXj.png' },
+  { title: 'Medisphere Hospital & CRM', category: 'Hospital + CRM', tech: ['React', 'Node.js', 'Tailwind'], color: 'from-cyan-600 via-blue-600 to-blue-700', link: 'https://medisphere-three.vercel.app/', logo: 'https://medisphere-three.vercel.app/applogo.png' },
+  { title: 'TourWala Agency', category: 'Tours & Travels', tech: ['React', 'Tailwind', 'Vite'], color: 'from-orange-500 via-amber-600 to-yellow-600', link: 'https://tourwala.vercel.app/', logo: 'https://tourwala.vercel.app/assets/logo-DrXGqDA3.png' },
+  { title: 'BarkAtWork Job Portal', category: 'Android Application', tech: ['Android', 'Kotlin', 'Firebase'], color: 'from-rose-500 via-pink-600 to-purple-600', link: 'https://play.google.com/store/apps/details?id=com.barkatwork.app', logo: 'https://cdn-icons-png.flaticon.com/512/3281/3281329.png' },
 ]
 
 const teamMembers = [
-  { name: 'Ritik Pandey', role: 'Full Stack Developer  Android', skills: ['React', 'Node.js', 'MongoDB','Express.js','Android','Java','Firebase'], initials: 'RP', color: 'from-brand-500 to-teal-500' },
-  { name: 'Vivang Mishra', role: 'Full Stack developer (MERN)', skills: ['React.js', 'Express.js', 'Node.js', 'MongoDB', 'Next.js', 'Tailwind CSS'], initials: 'VM', color: 'from-purple-500 to-pink-500' },
-  { name: 'Vishwajeet Singh', role: 'Frontend Develope & Project Consultant', skills: ['React.js','JavaScript','HTML','Tailwind CSS','Project Consultant'], initials: 'VS', color: 'from-orange-500 to-red-500' },
+  {
+    name: 'Ritik Pandey',
+    role: 'Full Stack & Android Developer',
+    image: ritikImg,
+    skills: ['React', 'Node.js', 'MongoDB', 'Express.js', 'Android', 'Java', 'Firebase'],
+    initials: 'RP',
+    color: 'from-brand-500 to-teal-500',
+  },
+  {
+    name: 'Vivang Mishra',
+    role: 'Full Stack Developer (MERN)',
+    image: vivangImg,
+    skills: ['React.js', 'Express.js', 'Node.js', 'MongoDB', 'Next.js', 'Tailwind CSS'],
+    initials: 'VM',
+    color: 'from-purple-500 to-pink-500',
+  },
 ]
 
 function StatCounter({ value, suffix, label }) {
@@ -95,17 +137,29 @@ export default function Home() {
   return (
     <PageWrapper>
       <Helmet>
-        <title>MBS WebTech - Build Modern Websites & Apps for Your Business</title>
-        <meta name="description" content="Professional web development agency specializing in React websites, e-commerce stores, portfolio sites, and Android apps. Start your project today." />
+        <title>MBS TECHNOLOGIES - Custom Web & Android App Development Agency</title>
+        <meta
+          name="description"
+          content="Professional web development agency in Lucknow, India specializing in custom React websites, full-stack MERN apps, e-commerce stores, billing software, and Android apps."
+        />
+        <meta
+          name="keywords"
+          content="web development, MERN stack, custom website design, e-commerce development, billing software, android app development, MBS TECHNOLOGIES, Lucknow web developer"
+        />
+        <link rel="canonical" href="https://mbswebtech.com/" />
+        <meta property="og:title" content="MBS TECHNOLOGIES - Custom Web & Android App Development Agency" />
+        <meta
+          property="og:description"
+          content="We build modern, high-performance websites and Android applications that help businesses scale."
+        />
+        <meta property="og:url" content="https://mbswebtech.com/" />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       {/* ── HERO ───────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+      <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-white dark:bg-slate-950">
         {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-brand-50/30 to-teal-50/30 dark:from-slate-950 dark:via-brand-950/20 dark:to-slate-950" />
-        <div className="absolute inset-0 bg-grid-pattern" />
-        <div className="absolute top-1/3 left-1/4 w-72 h-72 bg-brand-400/20 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-teal-400/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }} />
+        <div className="absolute inset-0 bg-white dark:bg-slate-950" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -175,94 +229,21 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Right – Visual mockup */}
+            {/* Right – Interactive Services Showcase Badges */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, x: 40 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-              className="relative"
+              className="relative flex items-center justify-center"
             >
-              {/* Main card */}
-              <div className="relative z-10 glass-card p-2 shadow-2xl shadow-brand-500/20">
-                <div className="rounded-xl overflow-hidden bg-gradient-to-br from-brand-600 to-teal-500 aspect-video flex items-center justify-center relative">
-                  {/* Browser chrome */}
-                  <div className="absolute top-0 inset-x-0 h-8 bg-black/20 flex items-center px-4 gap-2">
-                    <div className="flex gap-1.5">
-                      {['#ff5f57','#febc2e','#28c840'].map(c => <div key={c} className="w-3 h-3 rounded-full" style={{ background: c }} />)}
-                    </div>
-                    <div className="flex-1 mx-4 h-4 rounded-full bg-white/20" />
-                  </div>
-                  {/* Content */}
-                  <div className="text-center text-white mt-6">
-                    <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center mx-auto mb-3">
-                      <Code2 className="w-8 h-8" />
-                    </div>
-                    <div className="font-display font-bold text-xl">MBS WebTech</div>
-                    <div className="text-white/70 text-sm">Your Digital Partner</div>
-                  </div>
-
-                  {/* Floating cards */}
-                  <motion.div
-                    animate={{ y: [0, -8, 0] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                    className="absolute -bottom-4 -left-4 bg-white dark:bg-slate-800 rounded-xl p-3 shadow-xl border border-slate-100 dark:border-slate-700"
-                  >
-                    <div className="flex items-center gap-2 text-xs">
-                      <div className="w-6 h-6 rounded-lg bg-green-500 flex items-center justify-center">
-                        <CheckCircle2 className="w-4 h-4 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-slate-900 dark:text-white">Project Launched</div>
-                        <div className="text-slate-400">2 hours ago</div>
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    animate={{ y: [0, 8, 0] }}
-                    transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-                    className="absolute -top-2 -right-4 bg-white dark:bg-slate-800 rounded-xl p-3 shadow-xl border border-slate-100 dark:border-slate-700"
-                  >
-                    <div className="flex items-center gap-2 text-xs">
-                      <div className="w-6 h-6 rounded-lg bg-brand-500 flex items-center justify-center">
-                        <Star className="w-3 h-3 text-white fill-white" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-slate-900 dark:text-white">5.0 Rating</div>
-                        <div className="text-slate-400">From 40+ clients</div>
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
-
-              {/* Decorative orbs */}
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-400/20 rounded-full blur-2xl" />
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-teal-400/20 rounded-full blur-2xl" />
+              <ServicesBadges />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ── TRUSTED TECH ─────────────────────────────────────── */}
-      <section className="py-12 border-y border-slate-100 dark:border-slate-800 bg-white/80 dark:bg-slate-900/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm font-medium text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-8">
-            Technologies We Master
-          </p>
-          <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-            {techStack.map((tech) => (
-              <motion.div
-                key={tech}
-                whileHover={{ y: -3 }}
-                className="px-5 py-2.5 rounded-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium hover:border-brand-300 hover:text-brand-600 dark:hover:text-brand-400 transition-all cursor-default"
-              >
-                {tech}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── EXCLUSIVE OFFERS & VALUE PROPOSITION MARQUEE ───────── */}
+      <OffersMarquee />
 
       {/* ── SERVICES ─────────────────────────────────────────── */}
       <section className="py-24 px-4 sm:px-6 lg:px-8">
@@ -307,20 +288,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── STATS ─────────────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-r from-brand-600 to-teal-500 relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-        <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
+      {/* ── CLIENT TRUST GUARANTEES ───────────────────────────── */}
+      <section className="py-20 bg-gradient-to-r from-brand-600 via-brand-700 to-teal-600 relative overflow-hidden text-white shadow-2xl">
+        <div className="absolute inset-0 bg-grid-pattern opacity-15" />
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-teal-400/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-brand-400/20 rounded-full blur-3xl" />
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center text-white">
-                <div className="text-4xl md:text-5xl font-display font-bold mb-1">
-                  <CounterWrapper value={stat.value} suffix={stat.suffix} />
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-teal-200 mb-3">
+              <Sparkles className="w-3.5 h-3.5" /> Direct & Risk-Free
+            </div>
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-white mb-2">
+              Our Core Commitments to You
+            </h2>
+            <p className="text-white/80 text-sm md:text-base">
+              Built on radical transparency, full code ownership, and direct engineer collaboration.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {trustGuarantees.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                whileHover={{ y: -6 }}
+                className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 p-6 flex flex-col justify-between hover:bg-white/15 hover:border-white/30 transition-all shadow-xl"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center shadow-inner">
+                      <item.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <span className="text-[11px] font-semibold tracking-wide uppercase px-2.5 py-1 rounded-full bg-teal-400/20 border border-teal-300/30 text-teal-100">
+                      {item.tag}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-display font-bold text-white mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-white/85 leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
-                <div className="text-white/70 text-sm font-medium">{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -330,7 +344,7 @@ export default function Home() {
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto">
           <FadeIn className="text-center mb-16">
-            <span className="tag-pill mb-4">Why MBS WebTech</span>
+            <span className="tag-pill mb-4">Why MBS TECHNOLOGIES</span>
             <h2 className="section-heading mt-3 mb-4">
               Built for <span className="gradient-text">Results</span>
             </h2>
@@ -362,48 +376,63 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <FadeIn className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-4">
             <div>
-              <span className="tag-pill mb-3">Portfolio</span>
+              <span className="tag-pill mb-3">Featured Projects</span>
               <h2 className="section-heading mt-2">
                 Our <span className="gradient-text">Recent Work</span>
               </h2>
             </div>
             <Link to="/portfolio" className="btn-secondary shrink-0">
-              View Full Portfolio <ArrowRight className="w-4 h-4" />
+              View All Projects <ArrowRight className="w-4 h-4" />
             </Link>
           </FadeIn>
 
           <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {portfolioPreviews.map((project, i) => (
               <StaggerItem key={project.title}>
-                <motion.div
+                <motion.a
+                  href={project.link || '/portfolio'}
+                  target={project.link ? '_blank' : '_self'}
+                  rel="noopener noreferrer"
                   whileHover={{ y: -6 }}
-                  className="rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all hover:shadow-xl group cursor-pointer"
+                  className="block rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 hover:border-brand-200 dark:hover:border-brand-800 transition-all hover:shadow-xl group cursor-pointer"
                 >
-                  <div className={`h-44 bg-gradient-to-br ${project.color} flex items-center justify-center relative`}>
-                    <span className="text-white/20 text-6xl font-display font-bold">{i + 1}</span>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center text-white">
-                        <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center mx-auto mb-2">
-                          <Globe className="w-5 h-5" />
-                        </div>
-                        <div className="font-semibold text-sm">{project.category}</div>
+                  <div className={`h-48 bg-gradient-to-br ${project.color} flex items-center justify-center relative overflow-hidden p-4`}>
+                    <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
+                    {project.logo ? (
+                      <div className="relative z-10 w-24 h-24 rounded-2xl bg-white/95 dark:bg-slate-900/90 backdrop-blur-md shadow-2xl p-3.5 flex items-center justify-center border border-white/50 dark:border-slate-700/60 group-hover:scale-110 transition-transform duration-300">
+                        <img
+                          src={project.logo}
+                          alt={project.title}
+                          className="max-w-full max-h-full object-contain drop-shadow-md"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                          }}
+                        />
                       </div>
-                    </div>
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all flex items-center justify-center">
+                    ) : (
+                      <div className="relative z-10 w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center">
+                        <Globe className="w-8 h-8 text-white" />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-all flex items-center justify-center z-20">
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                        <span className="bg-white text-slate-900 text-sm font-semibold px-4 py-2 rounded-full">View Project</span>
+                        <span className="bg-white text-slate-900 text-xs font-bold px-4 py-2 rounded-full shadow-xl flex items-center gap-1.5">
+                          Open Live Demo <ArrowRight className="w-3.5 h-3.5" />
+                        </span>
                       </div>
                     </div>
                   </div>
                   <div className="p-4 bg-white dark:bg-slate-800">
-                    <h3 className="font-display font-bold text-slate-900 dark:text-white mb-2">{project.title}</h3>
+                    <h3 className="font-display font-bold text-slate-900 dark:text-white mb-2 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                      {project.title}
+                    </h3>
                     <div className="flex flex-wrap gap-1.5">
                       {project.tech.map(t => (
                         <span key={t} className="tag-pill text-xs">{t}</span>
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </motion.a>
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -489,20 +518,28 @@ export default function Home() {
             </Link>
           </FadeIn>
 
-          <StaggerContainer className="grid md:grid-cols-3 gap-6">
+          <StaggerContainer className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {teamMembers.map((member) => (
               <StaggerItem key={member.name}>
                 <motion.div
                   whileHover={{ y: -6 }}
-                  className="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-brand-200 dark:hover:border-brand-800 transition-all hover:shadow-lg text-center"
+                  className="p-8 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-brand-200 dark:hover:border-brand-800 transition-all hover:shadow-lg text-center"
                 >
-                  <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${member.color} flex items-center justify-center text-white text-2xl font-display font-bold mx-auto mb-4 shadow-lg`}>
-                    {member.initials}
-                  </div>
-                  <h3 className="font-display font-bold text-slate-900 dark:text-white mb-1">{member.name}</h3>
-                  <p className="text-brand-600 dark:text-brand-400 text-sm font-medium mb-3">{member.role}</p>
-                  <div className="flex flex-wrap justify-center gap-1.5">
-                    {member.skills.map(s => <span key={s} className="tag-pill">{s}</span>)}
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-20 h-20 rounded-2xl object-cover mx-auto mb-4 shadow-lg border-2 border-brand-500/20"
+                    />
+                  ) : (
+                    <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${member.color} flex items-center justify-center text-white text-2xl font-display font-bold mx-auto mb-4 shadow-lg`}>
+                      {member.initials}
+                    </div>
+                  )}
+                  <h3 className="font-display font-bold text-slate-900 dark:text-white text-xl mb-1">{member.name}</h3>
+                  <p className="text-brand-600 dark:text-brand-400 text-sm font-medium mb-4">{member.role}</p>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {member.skills.map(s => <span key={s} className="tag-pill text-xs">{s}</span>)}
                   </div>
                 </motion.div>
               </StaggerItem>
